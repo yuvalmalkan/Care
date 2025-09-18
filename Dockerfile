@@ -16,11 +16,11 @@ RUN dotnet publish Care/Care.csproj -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
-# Copy published output
+# Copy published output from build stage
 COPY --from=build /app/out ./
 
-# Copy SQLite DB
-COPY Care/app.db ./Care/app.db
+# Copy SQLite DB into root of container
+COPY Care/app.db ./app.db
 
 # Expose Render port
 EXPOSE 8080
