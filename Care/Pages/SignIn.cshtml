@@ -1,0 +1,69 @@
+@page
+@model Care.Pages.SignInModel
+
+
+
+@{
+    ViewData["Title"] = "SignIn";
+    ViewData["HideNavbar"] = true;
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/SignInStyleSheet.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <title>Sign In Page</title>
+</head>
+<body>
+
+<video autoplay muted loop id="bg-video">
+    <source src="/videos/backgroundblue.mp4" type="video/mp4">
+</video>
+
+<div style="margin-top: 40px ;padding-left:16px; color:white">
+    <h1>Sign In Page</h1>
+</div>
+
+<div class="flex-center" style="color:white; align-items:center; ">
+    <form method="post" class="SignInContainer glass" style=" color:white; margin-bottom: 50px;">
+        <h3 style="margin-top: 30px; margin-bottom: 30px; text-align: center">Sign In To Care</h3>
+
+        <div style="color:white; padding-left: 50px">
+            <input style="color:white; height: 30px; padding-left: 10px"
+                   class="glassSignIn glass-form"
+                   placeholder="Enter your email or username"
+                   type="text"
+                   asp-for="LoginIdentifier"
+                   required />
+        </div>
+
+        <div style="margin-top: 20px; color:white; padding-left: 50px;">
+            <input style="color:white; height: 30px; padding-left: 10px"
+                   class="glassSignIn glass-form"
+                   placeholder="Enter your account password"
+                   type="password"
+                   asp-for="Password"
+                   required />
+        </div>
+
+        <div style="margin-top: 60px;" class="flex-center">
+            <button style="color: white" type="submit" class="glass SignInButtonContainer">Sign In</button>
+        </div>
+
+        <div class="text-center mt-3">
+            <p>Not a member?</p>
+            <a class="btn btn-outline-light" asp-page="/Registration">Sign Up Today!</a>
+        </div>
+    </form>
+</div>
+
+@if (Model.LoginFailed)
+{
+    <p style="color: red;">Invalid username/email or password.</p>
+}
+
+</body>
+</html>

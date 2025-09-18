@@ -1,0 +1,237 @@
+@page
+@model About
+@{
+    ViewData["Title"] = "About Care";
+    ViewData["HideNavbar"] = true;
+}
+
+<link rel="stylesheet" href="~/css/AboutStylesheet.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+
+<video autoplay muted loop id="bg-video">
+    <source src="/videos/backgroundblue.mp4" type="video/mp4">
+</video>
+
+<div class="about-page-container">
+    <!-- Hero Section -->
+    <section class="" style="margin-top: 20px; position: relative;">
+        <div class="container glass">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold primary-brand-text mb-4">Care - A Project By Yuval Malkan</h1>
+                    <p class="lead mb-4" style="color: white">
+                        Precise, personalized, life-saving.
+                    </p>
+
+                    <div class="statistics-display-row">
+                        <div class="single-statistic-item">
+                            <h3 class="fw-bold primary-brand-text">24/7</h3>
+                            <p style="color: #f8f9fa;" class="small">Available Anytime</p>
+                        </div>
+                        <div class="single-statistic-item">
+                            <h3 class="fw-bold primary-brand-text">Save</h3>
+                            <p style="color: #f8f9fa;" class="small">Time Waiting In Lines</p>
+                        </div>
+                        <div class="single-statistic-item">
+                            <h3 class="fw-bold primary-brand-text">Global</h3>
+                            <p style="color: #f8f9fa;" class="small">Available Everywhere</p>
+                        </div>
+                        <div class="single-statistic-item">
+                            <h3 class="fw-bold primary-brand-text">Personalized</h3>
+                            <p style="color: #f8f9fa;" class="small">Tailored To Your Needs</p>
+                        </div>
+                        <div class="single-statistic-item">
+                            <h3 class="fw-bold primary-brand-text">Intuitive</h3>
+                            <p style="color: #f8f9fa;" class="small">Easy To Use</p>
+                        </div>
+                        <div class="single-statistic-item">
+                            <h3 class="fw-bold primary-brand-text">Instant</h3>
+                            <p style="color: #f8f9fa;" class="small">Immediate Diagnosis</p>
+                        </div>
+                        <div class="single-statistic-item">
+                            <h3 class="fw-bold primary-brand-text">Smart</h3>
+                            <p style="color: #f8f9fa;" class="small">Powered By AI</p>
+                        </div>
+                        <div class="single-statistic-item">
+                            <h3 class="fw-bold primary-brand-text">Revolutionary</h3>
+                            <p style="color: #f8f9fa;" class="small">Changing Healthcare</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- "Go to Main Page" Button -->
+            <div style="position: absolute; right: 130px; top: 30%; transform: translateY(-50%); ">
+                <button onclick="location.href='@Url.Page("/MainPage")'" class="pill-button glass"
+                        style="color: white; width: 200px; height: 50px; border: 2px solid white; text-shadow: 0 0 4px white; box-shadow: 0 0 8px white; transition: all 0.3s ease-in-out;">
+                    Go back to Care
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-statement-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center glass">
+                    <h2 style="margin-top: 10px" class="page-section-heading mb-4">Our Mission</h2>
+                    <p class="paragraph-text-content">
+                        Care was created to address the critical gap in healthcare accessibility worldwide. 
+                        We believe that everyone deserves immediate access to medical guidance, regardless of 
+                        their location or circumstances. Our AI-powered platform provides instant medical 
+                        assessments and self-care instructions while you wait for professional medical attention.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Solution -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="information-card h-100 border-0 shadow-sm glass">
+                        <div class="card-body p-4">
+                            <div class="large-icon-container mb-3">
+                                <i class="fas fa-clock text-danger"></i>
+                            </div>
+                            <h4 class="page-section-heading card-title">The Problem</h4>
+                            <p style="color: #f8f9fa;" class="card-text">
+                                Long waiting times for medical appointments create critical gaps where conditions 
+                                can worsen. This is especially challenging in developing countries where advanced 
+                                medical care is not readily available. Precious time is lost when immediate 
+                                guidance could make a significant difference.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="information-card h-100 border-0 shadow-sm glass">
+                        <div class="card-body p-4">
+                            <div class="large-icon-container mb-3">
+                                <i class="fas fa-lightbulb text-success"></i>
+                            </div>
+                            <h4 class="card-title page-section-heading">Our Solution</h4>
+                            <p style="color: #f8f9fa;" class="card-text">
+                                Care provides instant AI-powered medical assessments available 24/7 from anywhere 
+                                in the world. Our platform offers personalized health recommendations, self-care 
+                                instructions, and guidance tailored to your specific profile, age, and medical history.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="main-features-section py-5">
+        <div class="container">
+            <h2 class="page-section-heading text-center mb-5">What Makes Care Different</h2>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="service-feature-block text-center glass">
+                        <div class="feature-display-icon mb-3">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h5 class="feature-block-title">Natural Treatment</h5>
+                        <p class="feature-text-description">
+                            Provides personalized recommendations for healthy nutrition, physiotherapy, and overall lifestyle improvement.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="service-feature-block text-center glass">
+                        <div class="feature-display-icon mb-3">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h5 class="feature-block-title">Personalized Care</h5>
+                        <p class="feature-text-description">
+                            Tailored recommendations based on your age, gender, weight, allergies, 
+                            and known medical conditions for truly personalized healthcare guidance.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="service-feature-block text-center glass">
+                        <div class="feature-display-icon mb-3">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h5 class="feature-block-title">Global Accessibility</h5>
+                        <p class="feature-text-description">
+                            Available worldwide with a special focus on making healthcare more accessible 
+                            in developing regions where medical resources are limited.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developer Section -->
+    <section class="developer-information-section py-5 glass">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="page-section-heading mb-4">Behind the Project</h2>
+                    <p class="paragraph-text-content mb-4" style="color: white">
+                        Care was developed by Yuval Malkan, a student at Herzliya Handasaim High School, 
+                        as part of a final year project in Web Development. The vision behind Care is to 
+                        create meaningful change in the healthcare industry by leveraging the power of 
+                        artificial intelligence to make quality medical guidance more accessible to everyone.
+                    </p>
+                    <div class="future-development-plans glass">
+                        <h4 class="mb-3" style="color: white">Future Development</h4>
+                        <p style="color: white">
+                            Our roadmap includes expanding the database, enhancing AI capabilities through 
+                            user interactions, and developing Care into a full-scale platform accessible 
+                            to users worldwide.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer Section -->
+    <section class="medical-disclaimer-section py-4" style="margin-top: 30px">
+        <div class="">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="alert warning-message-alert border-0" role="alert">
+                        <h6 class="alert-heading warning-message-heading">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Important Medical Disclaimer
+                        </h6>
+                        <p class="mb-0" style="color: #ffbc00;">
+                            Care is designed to provide preliminary health guidance and should not replace 
+                            professional medical advice, diagnosis, or treatment. Always consult with qualified 
+                            healthcare professionals for serious medical concerns. This service is intended 
+                            as a supplementary tool to help bridge the gap until professional care is available.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Buttons -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px;">
+        
+        <!-- Terms Button -->
+        <button onclick="location.href='@Url.Page("/TermsAndConditions")'" class="pill-button sign-up glass"
+                style="color: white; width: 200px; height: 50px;">
+            Terms And Conditions Page
+        </button>
+
+        <!-- Go Back Button -->
+        <button onclick="location.href='@Url.Page("/MainPage")'" class="pill-button glass"
+                style="color: white; width: 200px; height: 50px; border: 2px solid white; text-shadow: 0 0 4px white; box-shadow: 0 0 8px white; transition: all 0.3s ease-in-out;">
+            Go back to Care
+        </button>
+    </div>
+
+</div>

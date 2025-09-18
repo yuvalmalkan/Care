@@ -1,0 +1,67 @@
+﻿@page
+@model IndexModel
+@{
+    <link rel="stylesheet" href="~/css/IndexStyleSheet.css" />
+    ViewData["Title"] = "INDEX";
+    Layout = "_Layout";
+    ViewData["HideNavbar"] = true;
+}
+
+<video autoplay muted loop id="bg-video">
+    <source src="/videos/backgroundblue.mp4" type="video/mp4">
+</video>
+
+<body>
+    <div class="typing-text-container">
+        <h2 id="headline" style="text-align: left; color: white;"></h2>
+        <h4 id="subline" style="text-align: left; color: white;"></h4>
+    </div>
+
+
+    <div style="text-align: center; padding-top: 30px">
+        <img src="~/images/carelogoblue.png" alt="Care Logo" style="width: 100px; height: 100px;" />
+    </div>
+
+    <div class="centered-content" style="margin-top: -250px;">
+        <div class="button-container">
+            <button onclick="location.href='@Url.Page("/SignIn")'" class="pill-button sign-up glass">
+                Sign In To Care
+            </button>
+            <button onclick="location.href='@Url.Page("/Registration")'" class="pill-button sign-up glass">
+                Sign Up To Care
+            </button>
+        </div>
+    </div>
+
+    <!-- Bottom left About button -->
+    <div style="position: fixed; bottom: 20px; left: 20px;">
+        <button onclick="location.href='@Url.Page("/About")'" class="pill-button glass" style="color: white; padding: 10px 20px; font-size: 14px;">
+            About - Terms Of Use
+        </button>
+    </div>
+
+    <script>
+        const headlineText = "Care - A Project By Yuval Malkan.";
+        const sublineText = "Precise, personalized, life-saving.";
+        const headlineElem = document.getElementById("headline");
+        const sublineElem = document.getElementById("subline");
+
+        function typeText(text, element, delay = 25, callback) {
+            let i = 0;
+            const interval = setInterval(() => {
+                element.textContent += text[i];
+                i++;
+                if (i === text.length) {
+                    clearInterval(interval);
+                    if (callback) setTimeout(callback, 1); // Start subline after 1ms
+                }
+            }, delay);
+        }
+
+        window.onload = () => {
+            typeText(headlineText, headlineElem, 50, () => {
+                typeText(sublineText, sublineElem, 40);
+            });
+        };
+    </script>
+</body>

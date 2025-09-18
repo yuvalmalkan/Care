@@ -1,0 +1,38 @@
+﻿<Properties StartupConfiguration="{7051828E-7E80-42D7-B29E-1F846282F8DE}|Default">
+  <MonoDevelop.Ide.ItemProperties.Care PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.docker-compose PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Care/Dockerfile">
+    <Files>
+      <File FileName="Care/Pages/MainPage.cshtml.cs" />
+      <File FileName="Care/Pages/MainPage.cshtml" />
+      <File FileName="Care/wwwroot/index.html" />
+      <File FileName="Care/Program.cs" />
+      <File FileName="Care/Pages/Index.cshtml" />
+      <File FileName="Care/Pages/Index.cshtml.cs" />
+      <File FileName="Care/Pages/Privacy.cshtml" />
+      <File FileName="Care/Dockerfile" Line="15" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Care" expanded="True">
+            <Node name="Care" expanded="True">
+              <Node name="Pages" expanded="True">
+                <Node name="Index.cshtml" expanded="True" />
+                <Node name="MainPage.cshtml" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True" />
+              <Node name="Dockerfile" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>

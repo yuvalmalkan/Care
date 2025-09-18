@@ -1,0 +1,87 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Care</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Care.styles.css" asp-append-version="true" />
+    <style>
+        .navbar-logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+@{
+    var username = HttpContextAccessor.HttpContext?.Session.GetString("Username");
+    var isAdmin = HttpContextAccessor.HttpContext?.Session.GetInt32("IsAdmin") == 1;
+}
+
+@if (!(ViewData["HideNavbar"]?.Equals(true) ?? false))
+{
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3 position-relative" style="height: 50px; font-family:'Arial'">
+            <div class="container-fluid d-flex justify-content-between align-items-center w-100">
+
+                <!-- Left Side Nav Items -->
+                <ul class="navbar-nav flex-row gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark d-flex align-items-center gap-2" asp-area="" asp-page="/Userpage">
+                            <img src="~/images/user2.png" alt="ICON" style="width: 24px; height: 24px; object-fit: contain;" />
+                            <span>@username</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: red" asp-area="" asp-page="/Logout">Logout</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/About">About</a>
+                    </li>
+
+                    @if (isAdmin)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/AdminPage">ADMIN</a>
+                        </li>
+                    }
+                </ul>
+
+                <!--centered logo-->
+                <a class="navbar-logo" asp-area="" asp-page="/MainPage">
+                    <img src="~/images/carelogobluemain.png" alt="ICON" style="width: 60px; height: 20px; object-fit: contain;" />
+                </a>
+            </div>
+        </nav>
+    </header>
+}
+<!--
+<footer class="footer text-muted">
+    <div class="container" style="color: white">
+        Care By Yuval Malkan - <a asp-area="" asp-page="/About">About</a>
+    </div>
+</footer>
+-->
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

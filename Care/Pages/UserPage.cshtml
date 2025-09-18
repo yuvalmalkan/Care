@@ -1,0 +1,108 @@
+@page
+@model Care.Pages.UserPageModel
+@{
+    ViewData["Title"] = "Update User Details";
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/IndexStyleSheet.css" />
+<link rel="stylesheet" href="~/css/site.css"/>
+
+<video autoplay muted loop id="bg-video">
+    <source src="/videos/backgroundblue.mp4" type="video/mp4">
+</video>
+
+<h2 style="color: white">Update User Details</h2>
+
+@if (!string.IsNullOrEmpty(Model.FeedbackMessage))
+{
+    <div class="alert @Model.FeedbackCssClass">
+        @Model.FeedbackMessage
+    </div>
+}
+
+<form method="post" class="form">
+    <input type="hidden" asp-for="Input.Id" />
+
+    <div class="mb-3">
+        <label for="FirstName" class="form-label" style="color: white">First Name</label>
+        <input asp-for="Input.FirstName" style="" class="glassSignIn form-control" />
+        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="LastName" class="form-label" style="color: white">Last Name</label>
+        <input asp-for="Input.LastName" style="" class="glassSignIn form-control" />
+        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Username" class="form-label" style="color: white">Username</label>
+        <input asp-for="Input.Username" class="glassSignIn form-control" />
+        <span asp-validation-for="Input.Username" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Email" class="form-label" style="color: white">Email</label>
+        <input asp-for="Input.Email" type="email" class="glassSignIn form-control" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="MobileNumber" class="form-label" style="color: white">Mobile Number</label>
+        <input asp-for="Input.MobileNumber" class="glassSignIn form-control" />
+        <span asp-validation-for="Input.MobileNumber" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Country" class="form-label" style="color: white">Country</label>
+        <input asp-for="Input.Country" class="glassSignIn form-control" />
+        <span asp-validation-for="Input.Country" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="BirthDate" class="form-label" style="color: white">Birth Date</label>
+        <input asp-for="Input.BirthDate" type="date" class="glassSignIn form-control" />
+        <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Gender" class="form-label" style="color: white">Gender</label>
+        <select asp-for="Input.Gender" class="glassSignIn form-control">
+            <option value="">Select</option>
+            <option value="true">Male</option>
+            <option value="false">Female</option>
+        </select>
+        <span asp-validation-for="Input.Gender" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Weight" class="form-label" style="color: white">Weight (kg)</label>
+        <input asp-for="Input.Weight" class="glassSignIn form-control" />
+        <span asp-validation-for="Input.Weight" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Height" class="form-label" style="color: white">Height (cm)</label>
+        <input asp-for="Input.Height" class="glassSignIn form-control" />
+        <span asp-validation-for="Input.Height" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Allergies" class="form-label" style="color: white">Allergies</label>
+        <input asp-for="Input.Allergies" class="glassSignIn form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label for="KnownConditions" class="form-label" style="color: white">Known Conditions</label>
+        <input asp-for="Input.KnownConditions" class="glassSignIn form-control" />
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="pill-button sign-up glass btn-primary" style="color: white">Update</button>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

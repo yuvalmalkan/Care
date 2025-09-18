@@ -1,0 +1,174 @@
+@page
+@model MainPageModel
+@{
+ViewData["Title"] = "Main Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - Care</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <style>
+        .expanding-textarea {
+            border: none;
+            background: transparent;
+            resize: none;
+            overflow: hidden;
+            font-size: 1rem;
+            padding: 10px 45px 10px 10px; /* right padding for icon */
+            outline: none;
+            width: auto;
+            min-width: 200px;
+            max-width: 600px;
+            line-height: 1.5;
+            font-family: inherit;
+            color: white;
+        }
+
+        .textarea-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .ask-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .ask-button svg {
+            fill: #007bff;
+            width: 22px;
+            height: 22px;
+            transition: transform 0.2s ease;
+        }
+
+        .ask-button:hover svg {
+            transform: scale(1.15);
+            fill: #339cff;
+        }
+
+        .textarea-mirror {
+            position: absolute;
+            top: -9999px;
+            left: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            visibility: hidden;
+            font-size: 1rem;
+            padding: 10px;
+            line-height: 1.5;
+            font-family: inherit;
+            max-width: 600px;
+        }
+
+
+
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            flex-direction: column;
+        }
+
+        .glass {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .flexible-container {
+            max-width: 80%;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<video autoplay muted loop id="bg-video">
+    <source src="/videos/backgroundblue.mp4" type="video/mp4">
+</video>
+
+<h2 style="color: white; text-align: center;">Ask Care</h2>
+
+<div class="flex-center">
+    <form method="post" id="askForm" style="position: relative;">
+        <div class="textarea-container glass">
+            <textarea asp-for="UserPrompt"
+                      class="expanding-textarea"
+                      placeholder="How are you feeling today?"
+                      oninput="resizeTextarea(this)"
+                      id="UserPrompt"></textarea>
+            <button type="submit" class="ask-button" aria-label="Ask">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M476 3.8c-3.7-1.6-7.9-1.6-11.6 0L12.5 205.3C4.7 208.7 0 216.3 0 224.6c0 8.2 4.7 15.8 12.5 19.3l154.3 71.4 71.4 154.3c3.4 7.8 11 12.5 19.3 12.5 8.2 0 15.8-4.7 19.3-12.5L508.2 47.6c3.6-7.7 2-16.8-4-22.8s-15.1-7.6-22.2-3.8z"/>
+                </svg>
+            </button>
+        </div>
+        <span id="textarea-mirror" class="textarea-mirror"></span>
+    </form>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.GeminiResponse))
+{
+<div class="flex-center">
+    <div class="flexible-container glass fade-in" style="text-align: center; color: white; margin-top: 40px;">
+        @Html.Raw(Model.GeminiResponse?.Replace("*", "<br/>"))
+    </div>
+</div>
+}
+
+<script>
+    const textarea = document.getElementById("UserPrompt");
+    const form = document.getElementById("askForm");
+
+    // Resize on input
+    function resizeTextarea(el) {
+        const mirror = document.getElementById('textarea-mirror');
+        mirror.textContent = el.value || el.placeholder;
+
+        mirror.style.width = 'auto';
+        const newWidth = Math.min(mirror.offsetWidth + 20, 600);
+        el.style.width = newWidth + 'px';
+
+        if (newWidth >= 600) {
+            el.style.height = 'auto';
+            el.style.height = el.scrollHeight + 'px';
+        } else {
+            el.style.height = 'auto';
+        }
+    }
+
+    window.onload = () => {
+        if (textarea) resizeTextarea(textarea);
+    };
+
+    // Submit on Enter
+    textarea.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            form.submit();
+        }
+    });
+</script>
+</body>
+</html>

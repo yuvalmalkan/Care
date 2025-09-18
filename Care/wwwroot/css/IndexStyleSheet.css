@@ -1,0 +1,50 @@
+body {
+    background: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+}
+
+.pill-button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 9999px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.sign-in, .sign-up {
+    color: white;
+}
+
+.sign-in:hover,
+.sign-up:hover {
+    opacity: 0.8;
+}
+
+.typing-text-container {
+    margin: 40px;
+    font-family: monospace;
+}
+
+#headline::after, #subline::after {
+    content: "|";
+    animation: blink 1s infinite;
+    margin-left: 4px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}

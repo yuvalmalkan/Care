@@ -1,0 +1,152 @@
+@page
+@model Care.Pages.RegistrationModel
+@{
+    ViewData["Title"] = "Registration";
+    ViewData["HideNavbar"] = true;
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/RegistrationStyleSheet.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+
+<video autoplay muted loop id="bg-video">
+    <source src="/videos/underwaterbackground.mp4" type="video/mp4">
+</video>
+
+<h2 style="text-align: left; color: white; padding-left: 20px; margin-top: 40px; ">User Registration</h2>
+
+<div class="flex-center" style="color:white; align-items:center; ">
+    <form method="post" id="registerForm" class="glass-form">
+        <div asp-validation-summary="All" class="text-danger text-center mb-3"></div>
+
+        <!-- First Name -->
+        <div class="flex-center">
+            <input asp-for="fName" class="container glass" style="margin-bottom: 15px; color: white" placeholder="First Name" />
+        </div>
+        <!--<span asp-validation-for="fName" class="text-danger"></span>-->
+
+        <!-- Last Name -->
+        <div class="flex-center">
+            <input asp-for="lName" class="container glass" style="margin-bottom: 15px; color: white" placeholder="Last Name" />
+        </div>
+        <!--<span asp-validation-for="lName" class="text-danger"></span>-->
+
+        <!-- Email -->
+        <div class="flex-center">
+            <input asp-for="uEmail" class="container glass" style="margin-bottom: 15px; color: white" placeholder="Email" />
+        </div>
+        <!--<span asp-validation-for="uEmail" class="text-danger"></span>-->
+
+        <!-- Password -->
+        <div class="flex-center">
+            <input asp-for="uPass" type="password" class="container glass" style="color: white" placeholder="Password" />
+        </div>
+        <div class="form-row checkbox-row">
+            <label for="password_checkbox" class="checkbox-label">Show Password</label>
+            <input type="checkbox" id="password_checkbox" onchange="showPassword()" />
+        </div>
+        <!--<span asp-validation-for="uPass" class="text-danger"></span>-->
+
+        <!-- Mobile -->
+        <div class="flex-center">
+            <input asp-for="uMobile" class="container glass" style="margin-bottom: 15px; color: white" placeholder="Mobile (10 digits)" />
+        </div>
+        <!--<span asp-validation-for="uMobile" class="text-danger"></span>-->
+
+        <!-- Username -->
+        <div class="flex-center">
+            <input asp-for="uUser" class="container glass" style="margin-bottom: 15px; color: white" placeholder="Username" />
+        </div>
+        <!--<span asp-validation-for="uUser" class="text-danger"></span>-->
+
+        <!-- Birth Date -->
+        <div class="flex-center container glass" style="color: white">
+            <div class="form-row">
+                <label style="text-align: left">Date of Birth:</label>
+                <div class="dob-container glass" style="margin-left: 200px">
+                    <select asp-for="bDay">
+                        @for (int i = 1; i <= 31; i++) { <option value="@i">@i</option> }
+                    </select>
+                    <select asp-for="bMonth">
+                        @for (int i = 1; i <= 12; i++) { <option value="@i">@i</option> }
+                    </select>
+                    <select asp-for="bYear" style="width: 100px">
+                        @for (int i = 1950; i <= DateTime.Now.Year; i++) { <option value="@i">@i</option> }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--<span asp-validation-for="bDay" class="text-danger"></span>-->
+
+        <!-- Country -->
+        <div class="flex-center">
+            <input asp-for="uCountry" class="container glass" style="margin-bottom: 15px; color: white" placeholder="Country" />
+        </div>
+        <!--<span asp-validation-for="uCountry" class="text-danger"></span>-->
+
+        <!-- Gender -->
+        <div class="container glass" style=" margin-bottom: 15px; color: white; ">
+            <p>Gender:</p>
+            <label style="margin-right: 10px;">
+                <input type="radio" asp-for="uGender" value="true" /> Male
+            </label>
+            <label>
+                <input type="radio" asp-for="uGender" value="false" /> Female
+            </label>
+        </div>
+        <!-- <span asp-validation-for="uGender" class="text-danger"></span>-->
+
+        <!-- Weight -->
+        <div class="flex-center">
+            <input asp-for="uWeight" step="0.1" class="container glass" style="margin-bottom: 15px; color: white" placeholder="Weight (kg)" />
+        </div>
+        <!--<span asp-validation-for="uWeight" class="text-danger"></span>-->
+
+        <!-- Height -->
+        <div class="flex-center">
+            <input asp-for="uHeight" step="0.1" class="container glass" style="margin-bottom: 15px; color: white" placeholder="Height (cm)" />
+        </div>
+        <!--<span asp-validation-for="uHeight" class="text-danger"></span>-->
+
+        <!-- Allergies -->
+        <div class="flex-center">
+            <input asp-for="uAllergies" rows="2" class="container glass" style="margin-bottom: 15px; color: white" placeholder="Allergies (optional)"></input>
+        </div>
+        <!--<span asp-validation-for="uAllergies" class="text-danger"></span>-->
+
+        <!-- Conditions -->
+        <div class="flex-center">
+            <input asp-for="uConditions" rows="2" class="container glass" style="margin-bottom: 15px; color: white" placeholder="Known Conditions (optional)"></input>
+        </div>
+        <!--<span asp-validation-for="uConditions" class="text-danger"></span>-->
+
+        <!-- Submit Button -->
+        <div style="text-align:center; margin-top: 20px;">
+            <button type="submit" class="container glass" style="color: white">Register</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/Validation.js"></script>
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function (e) {
+            if (!validate()) {
+                e.preventDefault();
+            }
+        });
+
+        function showPassword() {
+            var passwordInput = document.getElementById("uPass");
+            var checkbox = document.getElementById("password_checkbox");
+            if (checkbox.checked) {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+    </script>
+}

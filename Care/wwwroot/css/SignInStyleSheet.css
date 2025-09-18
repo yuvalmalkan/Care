@@ -1,0 +1,131 @@
+/* Background */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.SignInContainer {
+    width: 500px;
+    height: 400px;
+    margin: 50px auto;
+
+}
+
+/* Center content */
+.flex-center2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+;
+}
+
+.flex-center.vertical {
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Heading */
+.glass-heading {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 4px black;
+}
+
+/* Form layout */
+.glass-form {
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Label + input row */
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Label text */
+.form-row label {
+    color: white;
+    min-width: 120px;
+    text-align: left;
+}
+
+/* Glass input */
+.glass-form input,
+.glass-form select,
+.glass-form button {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 9999px;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    outline: none;
+    transition: background 0.3s ease;
+    width: 100%;
+}
+
+.glass-form input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.glass-form input:hover,
+.glass-form input:focus,
+.glass-form select:hover,
+.glass-form select:focus {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Date of birth container */
+.dob-container {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+.dob-container select {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+/* Checkbox */
+.checkbox-row {
+    gap: 10px;
+}
+
+.checkbox-label {
+    color: white;
+}
+
+/* Error styling */
+span {
+    color: red;
+    font-size: 14px;
+    margin-left: 130px;
+}
+
+.SignInFormContainer {
+    width: 100px;
+    height: 20px;
+    margin: 50px auto;
+}
+

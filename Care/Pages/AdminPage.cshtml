@@ -1,0 +1,49 @@
+@page
+@model Care.Pages.AdminPageModel
+@{
+    ViewData["Title"] = "Admin Panel";
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="css/site.css"/>
+
+
+<video autoplay muted loop id="bg-video">
+    <source src="/videos/greybackground.mp4" type="video/mp4">
+</video>
+
+
+<h2 style="color: white; text-align: center; margin-top: 20px;">Admin Panel - Manage Users</h2>
+
+<table class="table glass table-hover mt-4" style="background-color: rgba(0, 0, 0, 0.6); color: white;">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Full Name</th>
+        <th>Country</th>
+        <th>Admin</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model.Users)
+    {
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.Username</td>
+            <td>@user.Email</td>
+            <td>@user.FirstName @user.LastName</td>
+            <td>@user.Country</td>
+            <td>@(user.IsAdmin ? "Yes" : "No")</td>
+            <td>
+                <a asp-page="/UserPage" asp-route-id="@user.Id" class="glass btn btn-sm btn-primary">Edit</a>
+                <form method="post" asp-page-handler="Delete" asp-route-id="@user.Id" style="display: inline;">
+                    <button type="submit" class="glass btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

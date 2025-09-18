@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  care:
+    image: ${DOCKER_REGISTRY-}care
+    build:
+      context: .
+      dockerfile: Care/Dockerfile

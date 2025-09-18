@@ -1,0 +1,194 @@
+﻿html {
+  font-size: 14px;
+  
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+
+  margin-bottom: 60px;
+
+
+
+}
+
+.Gcontainer {
+  width: 600px;
+  height: 170px;
+  margin: 250px auto;
+
+}
+
+
+.IndexContainer {
+  width: 150px;
+  height: 50px;
+  margin: 250px auto;
+
+}
+
+
+.WideContainer {
+  width: 100%;
+
+
+}
+
+/* Glass Effect */
+.glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.fullglass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  color: white;
+}
+
+
+.flexible-container {
+  
+  display: inline-block;       /* Shrinks to fit content */
+  padding: 1rem;               /* Optional padding */
+  border-radius: 8px;          /* Optional rounded corners */
+  font-size: 1rem;
+  max-width: 60%;              /* Optional: limit width */
+  word-wrap: break-word;       /* Prevent overflow */
+
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;  /* 👈 center horizontally */
+  align-items: flex-start;  /* 👈 keeps it at the top (change to 'center' for full vertical centering) */
+  width: 100%;
+}
+
+.nav-icon {
+  height: 32px;
+  width: 32px;
+  object-fit: contain; /* Keeps proportions inside the box */
+}
+
+.nav-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Remove default spacing */
+}
+
+
+.glassSignIn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.SignInButtonContainer {
+  width: 150px;
+  height: 50px;
+
+
+}
+
+.fade-in {
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.submit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  transition: transform 0.2s ease;
+}
+
+.submit-button:hover {
+  transform: scale(1.1);
+}
+
+.submit-button img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.flexible-container {
+  animation: fadeIn 1s ease-in;
+  white-space: pre-line;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin-top: 30px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  margin-top: 30px;
+}
