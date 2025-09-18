@@ -2,28 +2,27 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
 
-# Copy solution and project files
-COPY Care.sln .
+# Copy only the project we care about
 COPY Care/Care.csproj Care/
-RUN dotnet restore
+RUN dotnet restore Care/Care.csproj
 
 # Copy the rest of the project
 COPY . .
 
-# Publish the project
+# Publish only the Care project
 RUN dotnet publish Care/Care.csproj -c Release -o out
 
 # Stage 2: Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 
-# Copy the published output
+# Copy published output
 COPY --from=build /app/out ./
 
-# Copy SQLite database
+# Copy SQLite DB
 COPY Care/app.db ./Care/app.db
 
-# Expose port 8080 for Render
+# Expose Render port
 EXPOSE 8080
 
 # Start the app
