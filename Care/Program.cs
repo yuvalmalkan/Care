@@ -12,26 +12,26 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        //Register services
+        // Register services
         builder.Services.AddRazorPages();
         builder.Services.AddAuthorization();
         builder.Services.AddSession();
         builder.Services.AddHttpContextAccessor();
 
-        //Register SQLite DB context
+        // Register SQLite DB context
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         var app = builder.Build();
 
-        //Seed DB
+        // Seed DB
         using (var scope = app.Services.CreateScope())
         {
             var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
             Seed.Initialize(db);
         }
 
-        //Middleware
+        // Middleware
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Error");
@@ -43,9 +43,14 @@ public class Program
         app.UseRouting();
 
         app.UseAuthorization();
-        app.UseSession(); //Must be after UseRouting and before MapRazorPages
+        app.UseSession(); // Must be after UseRouting and before MapRazorPages
 
         app.MapRazorPages();
+
+        // Listen on Render's dynamic port
+        var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+        app.Urls.Add($"http://*:{port}");
+
         app.Run();
     }
 }

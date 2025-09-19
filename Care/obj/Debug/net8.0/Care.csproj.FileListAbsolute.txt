@@ -416,3 +416,4 @@
 /Users/yuvalmalkan/Developer/CareByYuvalMalkan/Care/Care/obj/Debug/net8.0/Care.pdb
 /Users/yuvalmalkan/Developer/CareByYuvalMalkan/Care/Care/obj/Debug/net8.0/Care.genruntimeconfig.cache
 /Users/yuvalmalkan/Developer/CareByYuvalMalkan/Care/Care/obj/Debug/net8.0/ref/Care.dll
+/Users/yuvalmalkan/Developer/CareByYuvalMalkan/Care/Care/obj/Debug/net8.0/Care.sourcelink.json
